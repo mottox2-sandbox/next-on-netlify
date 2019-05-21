@@ -3,3 +3,4 @@ node_modules/
 public/_next/
 src/functions/pages
 .next
+build/
