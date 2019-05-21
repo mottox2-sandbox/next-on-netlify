@@ -5,5 +5,5 @@ exports.handler = (event, context, callback) => {
   console.log("[render] ", event.path)
   event.requestContext = {}
   const compatPage = compat(page)
-  const { req, res } = compatPage(event, context, callback)
+  compatPage(event, context, callback)
 };

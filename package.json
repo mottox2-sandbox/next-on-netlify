@@ -14,7 +14,8 @@
   },
   "scripts": {
     "dev": "next",
-    "build": "next build && cp -a public/_next/serverless/pages src/functions/pages && netlify-lambda build src/functions",
+    "build:next": "next build",
+    "build": "yarn build:next && cp -a public/_next/serverless/pages src/functions/ && netlify-lambda build src/functions",
     "start": "next start"
   }
 }
