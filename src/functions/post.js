@@ -126,8 +126,19 @@ const page = require("./pages/post");
 exports.handler = (event, context, callback) => {
   event.requestContext = {}
   const { req, res } = reqResMapper(event, callback);
-  req.query = event.queryStringParameters
-  console.log("[render] ", event.path)
+  // event.pathにはリライトされたURLが入る(ex. /posts/2)
+  const match = event.path.match(/posts\/(\d+)/)
+  console.log("[render] ", event.path, match)
+  console.log(match)
+  if (!match) {
+    return callback(null, {
+      statusCode: 404,
+      body: ''
+    })
+  }
+  req.query = {
+    id: match[1]
+  }
   console.log('[header]', event.queryStringParameters, req.query, req.query['id'])
   page.render(req, res);
 };

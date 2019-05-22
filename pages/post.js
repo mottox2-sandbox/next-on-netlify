@@ -17,9 +17,10 @@ Post.getInitialProps = async props => {
     props.res.setHeader('Cache-Control', 'public, s-maxage=30, stale-while-revalidate')
   }
 
-  console.log('[renderApp]', props.asPath, props.query, props.req.query.id)
+  console.log('[renderApp]', props.asPath, props.query, props.req && props.req.query.id)
+  const id = props.req ? props.req.query.id : props.query.id
 
-  const { data } = await axios.get(`https://netlify-json-api.netlify.com/posts/${props.req.query.id}`)
+  const { data } = await axios.get(`https://netlify-json-api.netlify.com/posts/${id}`)
 
   return { post: data }
 }
