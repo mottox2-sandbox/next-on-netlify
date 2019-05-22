@@ -1,0 +1,2 @@
+/ /.netlify/functions/index 200
+/posts/:post_id /.netlify/functions/post?id=:post_id 200
