@@ -140,7 +140,6 @@ exports.handler = (event, context, callback) => {
   req.query = {
     id: match[1]
   }
-  res.setHeader('cache-control', 'public, s-maxage=30, stale-while-revalidate')
   console.log('[header]', event.queryStringParameters, req.query, req.query['id'])
   page.render(req, res);
 };
