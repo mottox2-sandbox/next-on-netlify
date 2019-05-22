@@ -1,14 +1,34 @@
-const Home = () => {
-  return <div>Welcome to Next.js!</div>;
+import axios from 'axios'
+import Link from 'next/link'
+import { withRouter } from 'next/router'
+
+const Home = ({ posts }) => {
+  return <div>
+    {
+      posts.map(post => (
+        <div key={post.id}>
+          <Link href={`/post?id=${post.id}`} as={`/posts/${post.id}`} passHref>
+            <a>
+              {post.title}
+            </a>
+          </Link>
+        </div>
+      ))
+    }
+  </div>;
 }
 
-Home.getInitialProps = props => {
-  console.log(props.res)
+Home.getInitialProps = async props => {
   if (props.res) {
     console.log('setHeader')
     props.res.setHeader('Cache-Control', 'public, s-maxage=30, stale-while-revalidate')
   }
-  return {}
+
+  console.log(props.asPath, props.query)
+
+  const { data } = await axios.get('https://netlify-json-api.netlify.com/posts')
+
+  return { posts: data }
 }
 
-export default Home;
+export default withRouter(Home);

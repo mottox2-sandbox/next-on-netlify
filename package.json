@@ -5,6 +5,7 @@
   "license": "MIT",
   "dependencies": {
     "amp-toolbox-optimizer": "^0.5.3",
+    "axios": "^0.18.0",
     "encoding": "^0.1.12",
     "netlify-lambda": "^1.4.11",
     "next": "^8.1.0",
