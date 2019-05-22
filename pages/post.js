@@ -1,8 +1,12 @@
 import axios from 'axios'
 import Link from 'next/link'
+import Head from 'next/head'
 
 const Post = ({ post }) => {
   return <div>
+    <Head>
+      <title>{post.title}</title>
+    </Head>
     <Link href="/">
       <a>HOME</a>
     </Link>

@@ -1,9 +1,13 @@
 import axios from 'axios'
 import Link from 'next/link'
+import Head from 'next/head'
 import { withRouter } from 'next/router'
 
 const Home = ({ posts }) => {
   return <div>
+    <Head>
+      <title>Next on Netlify</title>
+    </Head>
     {
       posts.map(post => (
         <div key={post.id}>
