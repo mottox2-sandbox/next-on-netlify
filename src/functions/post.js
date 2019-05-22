@@ -100,6 +100,7 @@ const reqResMapper = (event, callback) => {
       base64Support ? "base64" : undefined
     );
     response.multiValueHeaders = res.headers;
+    response.headers = res.headers;
     res.writeHead(response.statusCode);
     fixApiGatewayMultipleHeaders();
     callback(null, response);
@@ -139,6 +140,7 @@ exports.handler = (event, context, callback) => {
   req.query = {
     id: match[1]
   }
+  res.setHeader('cache-control', 'public, s-maxage=30, stale-while-revalidate')
   console.log('[header]', event.queryStringParameters, req.query, req.query['id'])
   page.render(req, res);
 };
