@@ -3,9 +3,19 @@ import Link from 'next/link'
 import Head from 'next/head'
 
 const Post = ({ post }) => {
+  const title = `${post.title} | Next on Netlify`
+  const description = "Next.jsをNetlify上で動かすデモです。"
   return <div>
     <Head>
-      <title>{post.title}</title>
+      <title>{title}</title>
+      <meta property="og:description" content={description}/>
+      <meta property="og:type" content="website"/>
+      <meta property="og:image" content="https://avatars1.githubusercontent.com/u/7007253?s=460&v=4"/>
+      <meta name="twitter:card" content="summary_large_image"/>
+      <meta name="twitter:creator" content="@mottox2"/>
+      <meta name="twitter:title" content={title}/>
+      <meta name="twitter:description" content={description}/>
+      <meta name="description" content={description}/>
     </Head>
     <Link href="/">
       <a>HOME</a>
