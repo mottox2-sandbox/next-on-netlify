@@ -1,5 +1,2 @@
 / /.netlify/functions/index 200
-/posts/1 /.netlify/functions/post/1 200
-/posts/2 /.netlify/functions/post/2 200
-/posts/3 /.netlify/functions/post/3 200
-/posts/4 /.netlify/functions/post/4 200
+/posts/:post_id /.netlify/functions/post/:post_id 200
